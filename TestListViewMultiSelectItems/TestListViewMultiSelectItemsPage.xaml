@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:local="clr-namespace:TestListViewMultiSelectItems" 
+	xmlns:behaviors="clr-namespace:Behaviors;assembly=Behaviors"
+	x:Class="TestListViewMultiSelectItems.TestListViewMultiSelectItemsPage">
+		<ContentPage.Resources>
+		<ResourceDictionary>
+			<local:SelectedItemEventArgsToSelectedItemConverter x:Key="SelectedItemConverter" />
+		</ResourceDictionary>
+	</ContentPage.Resources>
+	<StackLayout Padding="20,20,20,20">
+		<Label Text = "{Binding SelectedItemsCounter, StringFormat='SelectedItems\' Counter {0}'}" HorizontalTextAlignment = "Center"/> 
+		<ListView ItemsSource="{Binding Items}">
+			    <ListView.Behaviors>
+						<behaviors:EventHandlerBehavior EventName="ItemTapped">
+							<behaviors:InvokeCommandAction Command="{Binding ItemTappedCommand}"/>
+						</behaviors:EventHandlerBehavior>
+	    </ListView.Behaviors>
+			<ListView.ItemTemplate> 
+				<DataTemplate>
+					<ViewCell>
+						<StackLayout Orientation="Horizontal">
+							<Label Text="{Binding DisplayName}" TextColor = "Fuchsia" HorizontalOptions = "StartAndExpand"/>
+							<BoxView Color="Fuchsia" IsVisible="{Binding Selected}" HorizontalOptions = "End"/>
+						</StackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</StackLayout>
+</ContentPage>
