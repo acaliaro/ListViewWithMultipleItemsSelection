@@ -12,11 +12,11 @@
 	<StackLayout Padding="20,20,20,20">
 		<Label Text = "{Binding SelectedItemsCounter, StringFormat='SelectedItems\' Counter {0}'}" HorizontalTextAlignment = "Center"/> 
 		<ListView ItemsSource="{Binding Items}">
-			    <ListView.Behaviors>
-						<behaviors:EventHandlerBehavior EventName="ItemTapped">
-							<behaviors:InvokeCommandAction Command="{Binding ItemTappedCommand}"/>
-						</behaviors:EventHandlerBehavior>
-	    </ListView.Behaviors>
+		    <ListView.Behaviors>
+			<behaviors:EventHandlerBehavior EventName="ItemTapped">
+				<behaviors:InvokeCommandAction Command="{Binding ItemTappedCommand}"/>
+				</behaviors:EventHandlerBehavior>
+			</ListView.Behaviors>
 			<ListView.ItemTemplate> 
 				<DataTemplate>
 					<ViewCell>
